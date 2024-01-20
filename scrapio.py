@@ -30,6 +30,7 @@ def fetch_page_data(url):
         for download_element in download_elements:
             download_url = download_element['href']
             print(f"Page Title: {title}")
+            print(f"Hack Title: {hack_title}")
             print(f"Download URL: {download_url}")
     else:
         print(f"Failed to fetch page. Status code: {response.status_code}")
