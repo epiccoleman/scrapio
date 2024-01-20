@@ -32,3 +32,11 @@ if __name__ == "__main__":
         print(f"Hack Description: {scraper.hack_description}")
         print(f"Hack Screenshot URL: {scraper.screenshot_url}")
         print(f"Download URL: {scraper.download_url}")
+
+        # Prompt the user if they want to create a directory for the hack
+        create_dir = input(f"Do you want to create a directory for the hack '{scraper.hack_title}' in your library? (y/n): ")
+        if create_dir.lower() == 'y':
+            print(f"Creating directory for the hack '{scraper.hack_title}'...")
+            # TODO: Add code to create the directory
+        else:
+            print("Directory creation skipped.")
