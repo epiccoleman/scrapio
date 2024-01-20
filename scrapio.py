@@ -86,17 +86,27 @@ class Scrapio():
         else:
             return ""
 
+def process_hack_file(scrapio, filename):
+    with open(filename, 'r') as file:
+        for line in file:
+            url = line.strip()
+            process_hack(scrapio, url)
+
 if __name__ == "__main__":
     # Get the library path and base rom path from the configuration
-    # # Check if a URL is provided as a command line argument
+    # Check if a URL or a file is provided as a command line argument
     if len(sys.argv) != 2:
-        print("Usage: python scrapio.py <URL>")
+        print("Usage: python scrapio.py <URL or filename>")
         sys.exit(1)
 
-    # # Get the URL from the command line argument
-    url = sys.argv[1]
-    # url = "https://www.smwcentral.net/?p=section&a=details&id=18238"
+    # Get the URL or filename from the command line argument
+    arg = sys.argv[1]
 
     scrapio = Scrapio()
-    process_hack(scrapio, url)
+
+    # Check if the argument is a URL or a filename
+    if arg.startswith('http://') or arg.startswith('https://'):
+        process_hack(scrapio, arg)
+    else:
+        process_hack_file(scrapio, arg)
 
