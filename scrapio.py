@@ -23,6 +23,15 @@ def fetch_page_data(url):
         # Extract the text of the hack_title_element as the hack_title
         hack_title = hack_title_element.text.strip()
 
+        # Find the td element with the inner text "Description:"
+        description_element = soup.find('td', text='Description:')
+
+        # Find the next sibling td element
+        hack_description_element = description_element.find_next_sibling('td')
+
+        # Extract the text of the hack_description_element as the hack_description
+        hack_description = hack_description_element.text.strip()
+
         # Find the elements matching the selector for download URL
         download_elements = soup.select('table.list tbody td.name a')
 
@@ -31,6 +40,7 @@ def fetch_page_data(url):
             download_url = download_element['href']
             print(f"Page Title: {title}")
             print(f"Hack Title: {hack_title}")
+            print(f"Hack Description: {hack_description}")
             print(f"Download URL: {download_url}")
     else:
         print(f"Failed to fetch page. Status code: {response.status_code}")
