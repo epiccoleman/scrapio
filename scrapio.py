@@ -23,6 +23,9 @@ if __name__ == "__main__":
     scraper = Scraper()
 
     # Call the method to fetch and print the page data
+    print(f"Library Path: {library_path}")
+    print(f"Base ROM Path: {base_rom_path}")
+
     if scraper.fetch_page_data(url):
         print(f"Page Title: {scraper.hack_title}")
         print(f"Hack Title: {scraper.hack_title}")
