@@ -20,6 +20,6 @@ class Downloader:
             f.write(response.content)
 
         # Download the screenshot to screenshot.png
-        response = requests.get(f"https:{self.scraper.screenshot_url}")
+        response = requests.get(self.scraper.screenshot_url)
         with open(f"{self.download_path}/screenshot.png", "wb") as f:
             f.write(response.content)
