@@ -1,4 +1,5 @@
 import requests
+import zipfile
 
 class Downloader:
     def __init__(self, scraper, download_path):
