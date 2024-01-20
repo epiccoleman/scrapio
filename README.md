@@ -5,10 +5,18 @@ This repository contains a Python script for scraping data about Super Mario Wor
 ## Requirements
 
 - Python 3.6 or higher
-- The `requests` and `beautifulsoup4` Python packages. These can be installed with pip:
+
+Before running the script, you need to set up a Python virtual environment and install the required packages. Here's how you can do it:
 
 ```bash
-pip install requests beautifulsoup4
+# Create a virtual environment
+python3 -m venv env
+
+# Activate the virtual environment
+source env/bin/activate
+
+# Install the required packages
+pip install -r requirements.txt
 ```
 
 ## Configuration
