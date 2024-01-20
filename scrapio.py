@@ -1,7 +1,15 @@
 import sys
+import configparser
 from src.scraper import Scraper
 
 if __name__ == "__main__":
+    # Load the configuration
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+
+    # Get the library path and base rom path from the configuration
+    library_path = config.get('DEFAULT', 'LibraryPath')
+    base_rom_path = config.get('DEFAULT', 'BaseRomPath')
     # # Check if a URL is provided as a command line argument
     # if len(sys.argv) != 2:
     #     # print("Usage: python scrapio.py <URL>")
