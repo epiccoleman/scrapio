@@ -14,6 +14,15 @@ def fetch_page_data(url):
         # Extract the title of the page
         title = soup.title.string.strip()
 
+        # Find the td element with the inner text "Name:"
+        name_element = soup.find('td', text='Name:')
+
+        # Find the next sibling td element with the class "name"
+        hack_title_element = name_element.find_next_sibling('td', class_='name')
+
+        # Extract the text of the hack_title_element as the hack_title
+        hack_title = hack_title_element.text.strip()
+
         # Find the elements matching the selector for download URL
         download_elements = soup.select('table.list tbody td.name a')
 
