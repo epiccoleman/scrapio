@@ -6,7 +6,8 @@ class Patcher:
         self.hack_path = hack_path
 
     def find_bps_file(self):
-        for file in os.listdir(self.hack_path):
-            if file.endswith(".bps"):
-                return os.path.join(self.hack_path, file)
+        for root, dirs, files in os.walk(self.hack_path):
+            for file in files:
+                if file.endswith(".bps"):
+                    return os.path.join(root, file)
         return None
