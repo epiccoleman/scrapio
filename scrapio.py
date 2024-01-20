@@ -35,8 +35,8 @@ def fetch_page_data(url):
         # Find the div element with the id "slideshow"
         slideshow_element = soup.find('div', id='slideshow')
 
-        # Find the a element within the slideshow_element
-        a_element = slideshow_element.find('a',)
+        # Find the a element with the class "current" within the slideshow_element
+        a_element = slideshow_element.find('a', class_='current')
 
         # Find the img element within the a_element
         screenshot_element = a_element.find('img')
