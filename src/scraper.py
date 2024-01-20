@@ -60,10 +60,7 @@ class Scraper:
             # Extract and print the download URL for each element
             if download_elements:
                 self.download_url = download_elements[0]['href']
-                print(f"Page Title: {title}")
-                print(f"Hack Title: {hack_title}")
-                print(f"Hack Description: {hack_description}")
-                print(f"Hack Screenshot URL: {screenshot_url}")
-                print(f"Download URL: {download_url}")
+                return True
         else:
             print(f"Failed to fetch page. Status code: {response.status_code}")
+            return False

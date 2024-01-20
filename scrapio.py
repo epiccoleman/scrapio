@@ -15,4 +15,9 @@ if __name__ == "__main__":
     scraper = Scraper()
 
     # Call the method to fetch and print the page data
-    scraper.fetch_page_data(url)
+    if scraper.fetch_page_data(url):
+        print(f"Page Title: {scraper.hack_title}")
+        print(f"Hack Title: {scraper.hack_title}")
+        print(f"Hack Description: {scraper.hack_description}")
+        print(f"Hack Screenshot URL: {scraper.screenshot_url}")
+        print(f"Download URL: {scraper.download_url}")
