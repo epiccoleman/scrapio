@@ -36,7 +36,7 @@ def fetch_page_data(url):
         slideshow_element = soup.find('div', id='slideshow')
 
         # Find the a element within the slideshow_element
-        a_element = slideshow_element.find('a')
+        a_element = slideshow_element.find('a',)
 
         # Find the img element within the a_element
         screenshot_element = a_element.find('img')
@@ -59,13 +59,14 @@ def fetch_page_data(url):
         print(f"Failed to fetch page. Status code: {response.status_code}")
 
 if __name__ == "__main__":
-    # Check if a URL is provided as a command line argument
-    if len(sys.argv) != 2:
-        print("Usage: python scrapio.py <URL>")
-        sys.exit(1)
+    # # Check if a URL is provided as a command line argument
+    # if len(sys.argv) != 2:
+    #     # print("Usage: python scrapio.py <URL>")
+    #     # sys.exit(1)
 
-    # Get the URL from the command line argument
-    url = sys.argv[1]
+    # # Get the URL from the command line argument
+    # url = sys.argv[1]
+    url = "https://www.smwcentral.net/?p=section&a=details&id=18238"
 
     # Call the function to fetch and print the page data
     fetch_page_data(url)
