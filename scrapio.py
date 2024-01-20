@@ -32,6 +32,15 @@ def fetch_page_data(url):
         # Extract the text of the hack_description_element as the hack_description
         hack_description = hack_description_element.text.strip()
 
+        # Find the div element with the id "slideshow"
+        slideshow_element = soup.find('div', id='slideshow')
+
+        # Find the img element within the slideshow_element
+        screenshot_element = slideshow_element.find('img')
+
+        # Extract the src attribute of the screenshot_element as the screenshot_url
+        screenshot_url = screenshot_element['src']
+
         # Find the elements matching the selector for download URL
         download_elements = soup.select('table.list tbody td.name a')
 
@@ -41,6 +50,7 @@ def fetch_page_data(url):
             print(f"Page Title: {title}")
             print(f"Hack Title: {hack_title}")
             print(f"Hack Description: {hack_description}")
+            print(f"Hack Screenshot URL: {screenshot_url}")
             print(f"Download URL: {download_url}")
     else:
         print(f"Failed to fetch page. Status code: {response.status_code}")
