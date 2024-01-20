@@ -35,8 +35,11 @@ def fetch_page_data(url):
         # Find the div element with the id "slideshow"
         slideshow_element = soup.find('div', id='slideshow')
 
-        # Find the img element within the slideshow_element
-        screenshot_element = slideshow_element.find('img')
+        # Find the a element within the slideshow_element
+        a_element = slideshow_element.find('a')
+
+        # Find the img element within the a_element
+        screenshot_element = a_element.find('img')
 
         # Extract the src attribute of the screenshot_element as the screenshot_url
         screenshot_url = screenshot_element['src']
