@@ -22,9 +22,9 @@ class Downloader:
         with open(f"{self.download_path}/hack.zip", "wb") as f:
             f.write(response.content)
 
-        # Unzip the downloaded file into a subdirectory called hack_zip_contents
+        # Unzip the downloaded file directly into download_path
         with zipfile.ZipFile(f"{self.download_path}/hack.zip", 'r') as zip_ref:
-            zip_ref.extractall(f"{self.download_path}/hack_zip_contents")
+            zip_ref.extractall(f"{self.download_path}")
 
         # Download the screenshot to screenshot.png
         response = requests.get(self.scraper.screenshot_url)
