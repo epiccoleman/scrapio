@@ -21,4 +21,4 @@ class Patcher:
             return
 
         output_name = os.path.basename(self.hack_path)
-        subprocess.run([self.multipatch_path, "--apply", patch_file, self.clean_rom_path, f"{output_name}.smc"])
+        subprocess.run([self.multipatch_path, "--apply", patch_file, self.clean_rom_path, f"{self.hack_path}/{output_name}.smc"])

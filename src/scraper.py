@@ -3,23 +3,21 @@ from bs4 import BeautifulSoup
 import re
 
 class Scraper:
-    def __init__(self):
+    def __init__(self, url):
+        self.smwc_url = url
         self.hack_title = None
         self.hack_description = None
         self.screenshot_url = None
         self.download_url = None
 
-    def fetch_page_data(self, url):
+    def fetch_page_data(self):
         # Send a GET request to the URL
-        response = requests.get(url)
+        response = requests.get(self.smwc_url)
 
         # Check if the request was successful (status code 200)
         if response.status_code == 200:
             # Parse the HTML content using BeautifulSoup
             soup = BeautifulSoup(response.content, 'html.parser')
-
-            # Extract the title of the page
-            title = soup.title.string.strip()
 
             # Find the td element with the inner text "Name:"
             name_element = soup.find('td', text='Name:')
@@ -52,14 +50,15 @@ class Scraper:
             match = re.search(r'(?<=images: \[\'\/\/dl\.smwcentral\.net\/image\/)\d+\.png', script_content)
 
             # Extract the image link as the screenshot_url
-            self.screenshot_url = match.group(0) if match else None
+            image = match.group(0) if match else None
+            self.screenshot_url = f"https://dl.smwcentral.net/image/{image}"
 
             # Find the elements matching the selector for download URL
             download_elements = soup.select('table.list tbody td.name a')
 
             # Extract and print the download URL for each element
             if download_elements:
-                self.download_url = download_elements[0]['href']
+                self.download_url = f"https:{download_elements[0]['href']}"
                 return True
         else:
             print(f"Failed to fetch page. Status code: {response.status_code}")

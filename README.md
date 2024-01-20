@@ -1,12 +1,13 @@
-# Super Mario World ROM Hack Scraper
+# Scrapio
 
-This repository contains a Python script for scraping data about Super Mario World ROM hacks from SMW Central. The script fetches and prints the title, description, screenshot URL, and download URL of a hack.
+This repo contains a script which, given a URL from SMWCentral, scrapes some info about a romhack, downloads the hack, and applies it to a clean ROM.
+
+It's a bit of mess, but most of the stuff I found that already existed was overcomplicated. I just wanted a quick way to churn through a list of hacks I had assembled, and this got it done.
+
+This was largely written by Aider, which was a fun development experience. I would guess I wrote about 10-20% of this code, the rest was all done by GPT-4. That thing's getting too good for comfort, and for something quick and dirty like this it's majorly cool.
 
 ## Requirements
-
-- Python 3.6 or higher
-
-Before running the script, you need to set up a Python virtual environment and install the required packages. Here's how you can do it:
+Before running the script, you need to set up a Python virtual environment and install the required packages:
 
 ```bash
 # Create a virtual environment
@@ -19,6 +20,8 @@ source env/bin/activate
 pip install -r requirements.txt
 ```
 
+You will also need to provide an executable for multipatch. You can download multipatch [here](https://github.com/Sappharad/MultiPatch).
+
 ## Configuration
 
 Before running the script, you need to set up the configuration file `config.ini`. This file should contain the following sections and keys:
@@ -27,16 +30,22 @@ Before running the script, you need to set up the configuration file `config.ini
 [DEFAULT]
 LibraryPath = /path/to/your/library
 BaseRomPath = /path/to/your/base/rom
+MultipatchCmdPath = /path/to/multipatch/binary
 ```
 
-Replace `/path/to/your/library` and `/path/to/your/base/rom` with the paths to your library and base ROM, respectively. These paths can be either absolute or relative to the working directory of the script.
+Replace `/path/to/your/library` and `/path/to/your/base/rom` with the paths to your library (the directory where you want to output processed hacks) and base ROM, respectively. These paths can be either absolute or relative to the working directory of the script.
+
+The base ROM file needs to be a clean ROM of American Super Mario World. You can find out more about this process [here](https://www.smwcentral.net/?p=viewthread&t=88029&page=1&pid=1399053#p1399053), but let's be real, if you're the kinda cat who's looking for a way to programmatically automate the application of hacks you probably already know how this works.
 
 ## Running the Script
 
-To run the script, use the following command:
-
+You can run the script in two different ways - either provide a single URL to the script to process one hack at a time:
 ```bash
-python scrapio.py
+python scrapio.py 'https://www.smwcentral.net/?p=section&a=details&id=28856'
 ```
 
-The script will print the title, description, screenshot URL, and download URL of the ROM hack at the URL specified in the script.
+Or provide a file with one url per line to process many files quickly. (see `input` for a sample.)
+
+The script will download the hack, some information about it, and then patch your clean rom.
+
+Happy Hacking!
