@@ -32,17 +32,22 @@ def fetch_page_data(url):
         # Extract the text of the hack_description_element as the hack_description
         hack_description = hack_description_element.text.strip()
 
-        # Find the div element with the id "slideshow"
-        slideshow_element = soup.find('div', id='slideshow')
+        import re
 
-        # Find the a element with the class "current" within the slideshow_element
-        a_element = slideshow_element.find('a', class_='current')
+        # Find the article element with the class "content screenshot-view"
+        screenshot_view_element = soup.find('article', class_='content screenshot-view')
 
-        # Find the img element within the a_element
-        screenshot_element = a_element.find('img')
+        # Find the script element within the screenshot_view_element
+        script_element = screenshot_view_element.find('script')
 
-        # Extract the src attribute of the screenshot_element as the screenshot_url
-        screenshot_url = screenshot_element['src']
+        # Extract the content of the script element
+        script_content = script_element.string
+
+        # Use a regular expression to find the first image link
+        match = re.search(r'"/dl\.smwcentral\.net[^"]+\.png"', script_content)
+
+        # Extract the image link as the screenshot_url
+        screenshot_url = match.group(0) if match else None
 
         # Find the elements matching the selector for download URL
         download_elements = soup.select('table.list tbody td.name a')
