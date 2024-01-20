@@ -44,7 +44,7 @@ def fetch_page_data(url):
         script_content = script_element.string
 
         # Use a regular expression to find the first image link
-        match = re.search(r'"/dl\.smwcentral\.net[^"]+\.png"', script_content)
+        match = re.search(r'(?<=images: \[\'\/\/dl\.smwcentral\.net\/image\/)\d+\.png', script_content)
 
         # Extract the image link as the screenshot_url
         screenshot_url = match.group(0) if match else None
