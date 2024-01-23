@@ -24,13 +24,6 @@ def process_hack(scrapio, url):
     # Call the method to fetch and print the page data
     if scraper.fetch_page_data():
         print("Hack successfully scraped...")
-
-        print(f"Page Title: {scraper.hack_title}")
-        print(f"Hack Title: {scraper.hack_title}")
-        print(f"Hack Description: {scraper.hack_description}")
-        print(f"Hack Screenshot URL: {scraper.screenshot_url}")
-        print(f"Download URL: {scraper.download_url}")
-
     else:
         print("Failed when scraping the hack")
         exit()
