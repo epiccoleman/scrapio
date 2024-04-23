@@ -4,7 +4,7 @@ This repo contains a script which, given a URL from SMWCentral, scrapes some inf
 
 It's a bit of mess, but most of the stuff I found that already existed was overcomplicated. I just wanted a quick way to churn through a list of hacks I had assembled, and this got it done.
 
-This was largely written by Aider, which was a fun development experience. I would guess I wrote about 10-20% of this code, the rest was all done by GPT-4. That thing's getting too good for comfort, and for something quick and dirty like this it's majorly cool.
+This was largely written by [Aider](https://github.com/paul-gauthier/aider), which was a fun development experience. I would guess I wrote about 10-20% of this code, the rest was all done by GPT-4. That thing's getting too good for comfort, and for something quick and dirty like this it's majorly cool.
 
 ## Requirements
 Before running the script, you need to set up a Python virtual environment and install the required packages:
