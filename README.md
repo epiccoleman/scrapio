@@ -45,7 +45,10 @@ python scrapio.py 'https://www.smwcentral.net/?p=section&a=details&id=28856'
 ```
 
 Or provide a file with one url per line to process many files quickly. (see `input` for a sample.)
+```bash
+python scrapio.py ./input
+```
 
-The script will download the hack, some information about it, and then patch your clean rom.
+The script will download the hack(s), some information about it, and then patch your clean rom.
 
 Happy Hacking!
